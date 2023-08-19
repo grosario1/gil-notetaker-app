@@ -25,7 +25,7 @@ app.get('/notes', (req, res) =>
 
 // GET Route for diagnostics page - wildcard page
 app.get('*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '/public/pages/404.html'));
+    res.status(404).sendFile(path.join(__dirname, '/public/404.html'));
 });
 
 // GET Route for api notes 
@@ -33,12 +33,6 @@ app.get('/api/notes', (req, res) => {
     const notes = JSON.parse(fs.readFileSync('db.json', 'utf8'));
     res.json(notes);
 });
-
-// GET Route for diagnostics page - wildcard page
-app.get('*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '/public/404.html'));
-});
-
 
 app.post('/api/notes', (req, res) => {
     const newNote = req.body;
