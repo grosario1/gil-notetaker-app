@@ -36,7 +36,7 @@ app.get('/api/notes', (req, res) => {
 
 // GET Route for diagnostics page - wildcard page
 app.get('*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '/public/pages/404.html'));
+    res.status(404).sendFile(path.join(__dirname, '/public/404.html'));
 });
 
 
