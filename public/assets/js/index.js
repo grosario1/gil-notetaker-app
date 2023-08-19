@@ -114,8 +114,15 @@ const handleNoteDelete = (e) => {
 // Function to handle viewing a note
 const handleNoteView = (e) => {
   e.preventDefault();
-  activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
-  renderActiveNote();
+  const noteElement = e.target.parentElement;
+  const noteDataAttr = noteElement.getAttribute('data-note');
+
+  if (noteDataAttr) {
+    activeNote = JSON.parse(noteDataAttr);
+    renderActiveNote();
+  } else {
+    console.error('Note data attribute not found:', noteElement);
+  }
 };
 
 // Function to handle viewing a new note
