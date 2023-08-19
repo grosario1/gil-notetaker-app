@@ -12,8 +12,13 @@ This application allows users to write and save notes. The app was developed usi
   - [Contributing](#contributing)
   - [Contact Info](#contact-info)
 
-## Installation
-The ReadMe was generated using code from the inquirer node js package including some custom code to help add the contents and autogenerate a professional looking ReadMe file. You can review the code within the index.js as well as the code from utils/generateMarkdown.js to reference how the ReadMe gets generated. First you should clone this repo (git repo https://github.com/grosario1/gr-SVG_Logo_Maker.git). Once you clode the repo, change directories to go into the Develop folder, from here you can modify the index.js to add or update the input prompts which are rendered by the use of the inquirer node js package. You will need to ensure you install the node.js and npm utility in order for you utilize this readme generator. You can follow the instructions to install the utility from here: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm. Once, it is install, use the cmd to navigate to the repo you just cloned and run.... `node init -y` to initized the node js project, then install the inquirer 8.2.4 node js package by running `npm i inquirer@8.2.4.` After, making your changes to the index.js file, you can then run `node index.js` from the command line and then you will now be prompted to input the contents of the ReadMe.
+## Installation 
+
+Localhost Testing - local testing without a web server or PaaS like Heroku: 
+
+First you should clone this repo (https://github.com/grosario1/gil-notetaker-app.git). You will need to ensure you install the npm utility and express.js framework in order for you test the app locally. You can follow the instructions to install the utility from here: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm. Once, it is install, use the cmd to navigate to the repo you just cloned and run.... `node init -y` to initized the node js project, then install the express js package by running `npm install --save express` . From the directory where you clone the repo, you should see a server.js file, you can then run `node server.js` from the command line and then the express web app will start listening in your localhost on port 3001. The console will log `App listening at http://localhost:3001`
+
+Add the url into the browser and the notetaker app/page will show up.
 ## Usage
 As shown below, the user clicks on the 'Get Started' button which will route the user to the notes page and from there the user can add 'Note Title', add 'Note Text'. After adding Note Text, the user can save the note by clicking on the save icon ![save-icon]("./../public/assets/save-icon.jpeg) from the top right corner of the page.
 
