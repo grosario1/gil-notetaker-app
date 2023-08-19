@@ -15,36 +15,40 @@ app.use(express.static('public'));
 
 // GET Route for home page
 app.get('/', (req, res) =>
-    res.sendFile(path.join(__dirname, '/public/pages/index.html'))
+    res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
 // GET Route for notes page
 app.get('/notes', (req, res) =>
-    res.sendFile(path.join(__dirname, '/public/notes.html'))
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
-// GET Route for diagnostics page - wildcard page
+// GET route for wildcard pages
 app.get('*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '/public/404.html'));
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
-// GET Route for api notes 
+// GET Route for api notes
 app.get('/api/notes', (req, res) => {
-    const notes = JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
+    const notesData = fs.readFileSync(path.join(__dirname, '/db/db.json'), 'utf8');
+    const notes = JSON.parse(notesData);
     res.json(notes);
-});
+  });  
 
+//POST to db.json
 app.post('/api/notes', (req, res) => {
     const newNote = req.body;
-    const notes = JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
-
+    const notesData = fs.readFileSync('./db/db.json', 'utf8');
+    const notes = JSON.parse(notesData);
+  
+    newNote.id = Date.now().toString();
+  
     notes.push(newNote);
-
-    fs.writeFileSync('db.json', JSON.stringify(notes));
+    fs.writeFileSync('./db/db.json', JSON.stringify(notes));
     res.json(newNote);
-});
-
-app.listen(PORT, () =>
+  });
+  
+  app.listen(PORT, () =>
     console.log(`App listening at http://localhost:${PORT}`)
-);
+  );
 
