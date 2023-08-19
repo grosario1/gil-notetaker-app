@@ -101,10 +101,14 @@ const handleNoteDelete = (e) => {
     resetActiveNote();
   }
 
-  deleteNote(noteId).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
+  deleteNote(noteId)
+    .then(() => {
+      getAndRenderNotes();
+      resetActiveNote(); // Clear the active note
+    })
+    .catch((error) => {
+      console.error('Error deleting note:', error);
+    });
 };
 
 // Function to handle viewing a note
@@ -195,3 +199,9 @@ if (window.location.pathname === '/notes') {
   getAndRenderNotes();
   renderActiveNote();
 }
+
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.classList.contains('delete-note')) {
+    handleNoteDelete(e);
+  }
+});
